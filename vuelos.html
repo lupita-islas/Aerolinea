@@ -86,6 +86,8 @@
     <input type="date" name="sal_af" id="sal_af">
     <input type="date" name="reg_bef" id="reg_bef">
     <input type="date" name="reg_af" id="reg_af">
+    <input type="date" name="sal_org" id="sal_org">
+    <input type="date" name="reg_org" id="reg_org">
 </form>
 
 <script>
@@ -101,6 +103,8 @@
         }else {
             var fecha = document.getElementById("salida").value;
             var arr = fecha.split("/");
+            var fecha_original=arr[2]+"-"+arr[1]+"-"+arr[0];
+            document.getElementById("sal_org").value = fecha_original;
             var date = new Date();
             arr[1] -= 1;
             date.setFullYear(arr[2], arr[1], arr[0]);
@@ -111,7 +115,6 @@
             document.getElementById("sal_af").value = text;
 
             var date2 = new Date();
-            arr[1] -= 1;
             date2.setFullYear(arr[2], arr[1], arr[0]);
             date2.setDate(date2.getDate() -1);
             var mes2 = date2.getMonth();
@@ -131,6 +134,8 @@
         }else {
             var fecha = document.getElementById("regreso").value;
             var arr = fecha.split("/");
+            var fecha_original2=arr[2]+"-"+arr[1]+"-"+arr[0];
+            document.getElementById("reg_org").value = fecha_original2;
             var date = new Date();
             arr[1] -= 1;
             date.setFullYear(arr[2], arr[1], arr[0]);
