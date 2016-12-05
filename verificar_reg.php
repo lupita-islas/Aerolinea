@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conexion.php");
+include("conexion2.php");
 
 $variable=$_POST["clase"];
 //echo $variable;
@@ -70,13 +70,14 @@ if($conn->connect_error) {
                     $id=$vuelos_reg[$x][0];
                     $sql_dis="SELECT * from asientos where Id_vuelo='$id'";
                     $res_dis=$conn->query($sql_dis);
-                    if($res_dis->num_rows>=52){
-                        if($res['Clase']=="PRIMERA"){
-                            $primera++;
-                        }else{
-                            $turista++;
+                    if($res_dis->num_rows>0){
+                        while($res = $res_dis->fetch_assoc()) {
+                            if ($res['Clase'] == "PRIMERA") {
+                                $primera++;
+                            } else {
+                                $turista++;
+                            }
                         }
-
                     }
                     $tot_prim=8-$primera;
                     $tot_tur=44-$turista;

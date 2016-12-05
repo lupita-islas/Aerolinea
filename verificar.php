@@ -1,7 +1,8 @@
 <?php
+session_start();
 session_destroy();
 session_start();
-include("conexion.php");
+include("conexion2.php");
 $origen=$_POST["origen"];
 $destino=$_POST["destino"];
 $fecha_sal=$_POST["salida"];
@@ -102,13 +103,14 @@ if($conn->connect_error) {
                     $id=$vuelos[$x][0];
                     $sql_dis="SELECT * from asientos where Id_vuelo='$id'";
                     $res_dis=$conn->query($sql_dis);
-                    if($res_dis->num_rows>=52){
-                        if($res['Clase']=="PRIMERA"){
-                            $primera++;
-                        }else{
-                            $turista++;
+                    if($res_dis->num_rows>0){
+                        while($res = $res_dis->fetch_assoc()) {
+                            if ($res['Clase'] == "PRIMERA") {
+                                $primera++;
+                            } else {
+                                $turista++;
+                            }
                         }
-
                     }
                     $tot_prim=8-$primera;
                     $tot_tur=44-$turista;

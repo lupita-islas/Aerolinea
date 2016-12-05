@@ -58,7 +58,7 @@ echo $_SESSION["tipo"];
         ?>
         <tr>
 
-            <?
+            <?php
             //echo $vuelos[$x][3];
             if ($eleccion == 1) {
                 if ($vuelos[$x][3] == $_SESSION["reg_bef"]) {

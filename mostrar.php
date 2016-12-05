@@ -69,11 +69,11 @@ echo $_SESSION["tipo"];
                 ?>
                 <tr>
 
-                    <?
+                    <?php
                     //echo $vuelos[$x][3];
                     if ($eleccion == 1) {
                         if ($vuelos[$x][3] == $_SESSION["sal_bef"]) {
-                            echo '<td>' . $vuelos[$x][1] . ' ' . $vuelos[$x][4];
+                            echo "<td>" . $vuelos[$x][1] . " " . $vuelos[$x][4];
                             if($vuelos[$x][3]!=null){
                                 echo '<br>' . $vuelos[$x][10] ;
                             }
@@ -175,6 +175,9 @@ echo $_SESSION["tipo"];
         ?>
     </table>
     <input type="submit" value="Continuar">
-        </form>
+<?php
+        echo "</form>";
+?>
+
 
 
