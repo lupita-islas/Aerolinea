@@ -88,6 +88,8 @@
     <input type="date" name="reg_af" id="reg_af">
     <input type="date" name="sal_org" id="sal_org">
     <input type="date" name="reg_org" id="reg_org">
+    <input type="text" name="precio_ida" id="precio_ida">
+    <input type="text" name="precio_reg" id="precio_reg">
 </form>
 
 <script>
@@ -108,6 +110,10 @@
             var date = new Date();
             arr[1] -= 1;
             date.setFullYear(arr[2], arr[1], arr[0]);
+
+            var fec_pre = new Date();
+            fec_pre.setFullYear(arr[2], arr[1], arr[0]);
+
             date.setDate(date.getDate() + 1);
             var mes = date.getMonth();
             mes += 1;
@@ -121,6 +127,21 @@
             mes2 += 1;
             var text2 = date2.getFullYear() + "-" + mes2 + "-" + date2.getDate();
             document.getElementById("sal_bef").value = text2;
+
+            //precio
+            var fec_hoy = new Date();
+            fec_hoy.setDate((fec_hoy.getDate()+30))
+            var fec_largo=new Date();
+            fec_largo.setDate(fec_largo.getDate()+90)
+            if(fec_pre < fec_hoy){
+                document.getElementById("precio_ida").value = "Precio_corto";
+            }else if(fec_pre > fec_hoy && fec_pre < fec_largo ){
+                document.getElementById("precio_ida").value = "Precio_medio";
+            }else if(fec_pre > fec_largo ){
+                document.getElementById("precio_ida").value = "Precio_largo";
+            }
+
+
         }
     }
     function rango_reg() {
@@ -139,6 +160,10 @@
             var date = new Date();
             arr[1] -= 1;
             date.setFullYear(arr[2], arr[1], arr[0]);
+
+            var fec_pre = new Date();
+            fec_pre.setFullYear(arr[2], arr[1], arr[0]);
+
             date.setDate(date.getDate() + 1);
             var mes = date.getMonth();
             mes += 1;
@@ -153,6 +178,19 @@
             mes2 += 1;
             var text2 = date2.getFullYear() + "-" + mes2 + "-" + date2.getDate();
             document.getElementById("reg_bef").value = text2;
+
+            //precio
+            var fec_hoy = new Date();
+            fec_hoy.setDate((fec_hoy.getDate()+30))
+            var fec_largo=new Date();
+            fec_largo.setDate(fec_largo.getDate()+90)
+            if(fec_pre < fec_hoy){
+                document.getElementById("precio_reg").value = "Precio_corto";
+            }else if(fec_pre > fec_hoy && fec_pre < fec_largo ){
+                document.getElementById("precio_reg").value = "Precio_medio";
+            }else if(fec_pre > fec_largo ){
+                document.getElementById("precio_reg").value = "Precio_largo";
+            }
         }
     }
 </script>

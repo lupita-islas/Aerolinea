@@ -32,6 +32,8 @@ $_SESSION["reg_af"]=$reg_af;
 $_SESSION["sal_bef"]=$sal_bef;
 $_SESSION["sal_af"]=$sal_af;
 $_SESSION["total"]=$total_bol;
+$_SESSION["precio_ida"]=$_POST["precio_ida"];
+$_SESSION["precio_reg"]=$_POST["precio_reg"];
 
 /*
 echo $origen;
@@ -43,7 +45,6 @@ echo $menor;
 echo $total_bol;
 echo '<br>';*/
 
-$vuelos;
 $f=0;
 
 if($conn->connect_error) {
@@ -72,6 +73,16 @@ if($conn->connect_error) {
                     $vuelos[$f][7]="NO"; //seleccionado
                     $vuelos[$f][8]=0; //disponible_turista
                     $vuelos[$f][9]=0;//disponible_primera
+                    $vuelos[$f][10]=$row["Escala"];
+
+                    //Precios
+                    $vuelos[$f][11]=$row["Precio_corto_t"];
+                    $vuelos[$f][12]=$row["Precio_medio_t"];
+                    $vuelos[$f][13]=$row["Precio_largo_t"];
+                    $vuelos[$f][14]=$row["Precio_corto_p"];
+                    $vuelos[$f][15]=$row["Precio_medio_p"];
+                    $vuelos[$f][16]=$row["Precio_largo_p"];
+
 
                     echo $vuelos[$f][0];
                     echo $vuelos[$f][1];

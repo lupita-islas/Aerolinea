@@ -42,6 +42,22 @@ if($conn->connect_error) {
                     $vuelos_reg[$f][7]="NO"; //seleccionado
                     $vuelos_reg[$f][8]=0; //disponible_turista
                     $vuelos_reg[$f][9]=0;//disponible_primera
+                    $vuelos_reg[$f][10]=$row["Escala"];
+
+                    //Precios
+                    $vuelos_reg[$f][11]=$row["Precio_corto_t"];
+                    $vuelos_reg[$f][12]=$row["Precio_medio_t"];
+                    $vuelos_reg[$f][13]=$row["Precio_largo_t"];
+                    $vuelos_reg[$f][14]=$row["Precio_corto_p"];
+                    $vuelos_reg[$f][15]=$row["Precio_medio_p"];
+                    $vuelos_reg[$f][16]=$row["Precio_largo_p"];
+
+                    echo $vuelos_reg[$f][0];
+                    echo $vuelos_reg[$f][1];
+                    echo $vuelos_reg[$f][2];
+                    echo $vuelos_reg[$f][3];
+                    echo $vuelos_reg[$f][4];
+
                     $f+=1;
 
                 }

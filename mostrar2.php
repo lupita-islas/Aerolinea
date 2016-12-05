@@ -11,8 +11,8 @@ if(!isset($eleccion)){
 $vuelos=$_SESSION["vuelos_reg"];
 $max=$_SESSION["numero_reg"];
 
-echo $vuelos[0][3];
-echo $_SESSION["sal_org"];
+echo $vuelos[0][1];
+echo $_SESSION["reg_org"];
 echo $_SESSION["tipo"];
     //global $f;
     ?>
@@ -63,11 +63,34 @@ echo $_SESSION["tipo"];
             if ($eleccion == 1) {
                 if ($vuelos[$x][3] == $_SESSION["reg_bef"]) {
                     echo '<td>' . $vuelos[$x][1] . ' ' . $vuelos[$x][4];
+                    if($vuelos[$x][3]!=null){
+                        echo '<br>' . $vuelos[$x][10] ;
+                    }
                     echo '<br>' . $vuelos[$x][2] . ' ' . $vuelos[$x][6];
                     echo '</td>';
                     echo '<td> <input type="radio" name="clase" value="0_'.$vuelos[$x][0].'" >';
+                    if($_SESSION["precio_reg"]=="Precio_corto"){
+                        echo '$'.$vuelos[$x][11];
+                        $_SESSION["precio2"]=$vuelos[$x][11];
+                    }else if($_SESSION["precio_reg"]=="Precio_medio"){
+                        echo '$'.$vuelos[$x][12];
+                        $_SESSION["precio2"]=$vuelos[$x][12];
+                    }else if($_SESSION["precio_reg"]=="Precio_largo"){
+                        echo '$'.$vuelos[$x][13];
+                        $_SESSION["precio2"]=$vuelos[$x][13];
+                    }
                     echo '<br>Disponibles:' . $vuelos[$x][8] . '</td>';
                     echo '<td> <input type="radio" name="clase" value="1_'.$vuelos[$x][0].'" > ';
+                    if($_SESSION["precio_reg"]=="Precio_corto"){
+                        echo '$'.$vuelos[$x][14];
+                        $_SESSION["precio2"]=$vuelos[$x][14];
+                    }else if($_SESSION["precio_reg"]=="Precio_medio"){
+                        echo '$'.$vuelos[$x][15];
+                        $_SESSION["precio2"]=$vuelos[$x][15];
+                    }else if($_SESSION["precio_reg"]=="Precio_largo"){
+                        echo '$'.$vuelos[$x][16];
+                        $_SESSION["precio2"]=$vuelos[$x][16];
+                    }
                     echo '<br> Disponibles:' . $vuelos[$x][9] . '</td>';
                 }
             } else if ($eleccion == 2) {
@@ -76,8 +99,28 @@ echo $_SESSION["tipo"];
                     echo '<br>' . $vuelos[$x][2] . ' ' . $vuelos[$x][6];
                     echo '</td>';
                     echo '<td> <input type="radio" name="clase" value="0_'.$vuelos[$x][0].'" >';
+                    if($_SESSION["precio_reg"]=="Precio_corto"){
+                        echo '$'.$vuelos[$x][11];
+                        $_SESSION["precio2"]=$vuelos[$x][11];
+                    }else if($_SESSION["precio_reg"]=="Precio_medio"){
+                        echo '$'.$vuelos[$x][12];
+                        $_SESSION["precio2"]=$vuelos[$x][12];
+                    }else if($_SESSION["precio_reg"]=="Precio_largo"){
+                        echo '$'.$vuelos[$x][13];
+                        $_SESSION["precio2"]=$vuelos[$x][13];
+                    }
                     echo '<br>Disponibles:' . $vuelos[$x][8] . '</td>';
                     echo '<td> <input type="radio" name="clase" value="1_'.$vuelos[$x][0].'"> ';
+                    if($_SESSION["precio_reg"]=="Precio_corto"){
+                        echo '$'.$vuelos[$x][14];
+                        $_SESSION["precio2"]=$vuelos[$x][14];
+                    }else if($_SESSION["precio_reg"]=="Precio_medio"){
+                        echo '$'.$vuelos[$x][15];
+                        $_SESSION["precio2"]=$vuelos[$x][15];
+                    }else if($_SESSION["precio_reg"]=="Precio_largo"){
+                        echo '$'.$vuelos[$x][16];
+                        $_SESSION["precio2"]=$vuelos[$x][16];
+                    }
                     echo '<br> Disponibles:' . $vuelos[$x][9] . '</td>';
                 }
 
@@ -87,8 +130,28 @@ echo $_SESSION["tipo"];
                     echo '<br>' . $vuelos[$x][2] . ' ' . $vuelos[$x][6];
                     echo '</td>';
                     echo '<td> <input type="radio" name="clase" value="0_'.$vuelos[$x][0].'" >';
+                    if($_SESSION["precio_reg"]=="Precio_corto"){
+                        echo '$'.$vuelos[$x][11];
+                        $_SESSION["precio2"]=$vuelos[$x][11];
+                    }else if($_SESSION["precio_reg"]=="Precio_medio"){
+                        echo '$'.$vuelos[$x][12];
+                        $_SESSION["precio2"]=$vuelos[$x][12];
+                    }else if($_SESSION["precio_reg"]=="Precio_largo"){
+                        echo '$'.$vuelos[$x][13];
+                        $_SESSION["precio2"]=$vuelos[$x][13];
+                    }
                     echo '<br>Disponibles:' . $vuelos[$x][8] . '</td>';
                     echo '<td> <input type="radio" name="clase" value="1_'.$vuelos[$x][0].'"> ';
+                    if($_SESSION["precio_reg"]=="Precio_corto"){
+                        echo '$'.$vuelos[$x][14];
+                        $_SESSION["precio2"]=$vuelos[$x][14];
+                    }else if($_SESSION["precio_reg"]=="Precio_medio"){
+                        echo '$'.$vuelos[$x][15];
+                        $_SESSION["precio2"]=$vuelos[$x][15];
+                    }else if($_SESSION["precio_reg"]=="Precio_largo"){
+                        echo '$'.$vuelos[$x][16];
+                        $_SESSION["precio2"]=$vuelos[$x][16];
+                    }
                     echo '<br> Disponibles:' . $vuelos[$x][9] . '</td>';
                 }
 
