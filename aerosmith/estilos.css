@@ -1,0 +1,54 @@
+.seleccionado{
+    color:green ;
+}
+.asiento{
+    font-size: 45px;
+}
+.extra{
+    font-size: 25px;
+}
+.botonExtra{
+    margin-left: 155px;
+}
+.ocupado{
+    color:red ;
+}
+.choose{
+    color:blue;
+}
+.asientoImage{
+    height: 40px;
+    width: 40px;
+
+
+}
+
+
+.primeraClase{
+    margin-right: 15px;
+    margin-left: 25px;
+    margin-top: 5px;
+}
+.imagen{
+    width: 450px;
+    height: 250px;
+}
+.imagenPago{
+    width: 350px;
+    height: 230px;
+}
+.divPago{
+    margin-left: 65px;
+    float: left;
+    width: 40%;
+}
+.divHide{
+    clear: left;
+    margin-left: 150px;
+    margin-bottom: 80px;
+}
+.siguiente{
+    margin-top: 115px;
+    margin-left: 570px;
+
+}
