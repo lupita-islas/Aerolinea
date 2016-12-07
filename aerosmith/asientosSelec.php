@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * Created by PhpStorm.
  * User: cesar
@@ -10,9 +11,11 @@ include("conexion.php");
 $id=$_POST['id'];
 $clase=$_POST['clase'];
 $numeros=$_POST['asientos'];
+$_SESSION['asientos'].=(string)$numeros;
 $asientos=explode(":",$numeros);
 $redondo=$_SESSION['isRedondo'];///aqui verificamos si es redondo
 for($i=0;$i<count($asientos)-1;$i++){
+
     $sql="INSERT INTO asientos (Id_vuelo,Num_asiento,Clase, Estado) VALUES('$id','$asientos[$i]','$clase','Vendido') ";
     if(!base($sql)){
         echo "Error";

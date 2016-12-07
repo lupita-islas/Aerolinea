@@ -9,6 +9,7 @@ session_start();
 require('fpdf181/fpdf.php');
 date_default_timezone_set('America/Mexico_City');
 $extra="";
+
 if($_SESSION['instrumentos']!=0){
     $extra .= "Instrumento |";
 }
@@ -49,14 +50,22 @@ $pdf->Cell(0,10,'---------------------------------------------------------------
 $pdf->Ln(5);
 $pdf->Cell(0,10,"Informacion de Pago:",0,1);
 $pdf->Cell(0,10,"Nombre del Titular: ".$_SESSION['clienteTitular'],0,1);
-
-if($_SESSION['isRedondo']){
-    $pdf->Cell(0,10,"ID Vuelo ida: ".$_SESSION['id_vuelo_ida']. "ID Vuelo Vuelta: ".$_SESSION['idVuelta'],0,1);
+if(!empty($_SESSION['contacto'])){
+    $pdf->Cell(0,10,"Nombre del Contacto: ".$_SESSION['contacto'],0,1);
+}
+if(isset($_SESSION['ticketRedondo'])){
+    $pdf->Cell(0,10,"ID Vuelo ida: ".$_SESSION['id_vuelo_ida']. " | ID Vuelo Vuelta: ".$_SESSION['idVuelta'],0,1);
 }else{
     $pdf->Cell(0,10,"ID Vuelo: ".$_SESSION['idIda'] ,0,1);
 }
 $pdf->Cell(0,10,"Boletos: ".$_SESSION['numPas'],0,1);
-$pdf->Cell(0,10,"Extras:    ".$extra,0,1);
+if($extra==""){
+    $pdf->Cell(0,10,"Extras: 'USTED NO LLEVA EXTRAS'   ",0,1);
+}else{
+    $pdf->Cell(0,10,"Extras:    ".$extra,0,1);
+}
+
+$pdf->Cell(0,10,"Asientos seleccionados:    ".$_SESSION['asientos'] ,0,1);
 $pdf->Cell(0,10,"Total: ",0,1);
 $pdf->Cell(0,10,"----------------------------------------------------------------------------------------------------------------------------------",0,1);
 $pdf->Ln(25);

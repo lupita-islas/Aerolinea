@@ -28,29 +28,31 @@ $extras=$_SESSION['instrumentos']+$_SESSION['maleta']+$_SESSION['abordo'];
     <br>
     <div class="divHide input-group " id="formtarjeta" style="display: none">
         <h4>Cantidad a pagar: </h4>
+        <form method="post" action="pagoTarjeta.php">
         <span class="glyphicon glyphicon-usd " aria-hidden="true"></span>
         <input type="text"  class="form-control-static" value="<?php echo $extras?>" disabled>
         <br>
         <span class="glyphicon glyphicon-user " aria-hidden="true"></span>
-        <input type="text"  class="form-control-static" placeholder="Nombre ">
+        <input type="text" name="nombre" class="form-control-static" placeholder="Nombre ">
         <br>
         <span class="glyphicon glyphicon-credit-card " aria-hidden="true"></span>
-        <input type="text"  class="form-control-static" required placeholder="Numero de Tarjeta">
+        <input type="text" name="numero" class="form-control-static" required placeholder="Numero de Tarjeta">
         <br>
         <span class="glyphicon glyphicon-lock " aria-hidden="true"></span>
-        <input type="text"  class="form-control-static" maxlength="4" required placeholder="Codigo de Seguridad">
+        <input type="text" name="seguridad" class="form-control-static" maxlength="4" required placeholder="Codigo de Seguridad">
         <br>
         <span class="glyphicon glyphicon-calendar " aria-hidden="true"></span>
-        <input type="month"  class="form-control-static" required placeholder="Fecha de vencimiento">
+        <input type="month"   name="vencimiento" class="form-control-static" required placeholder="Fecha de vencimiento">
         <br>
         <span class="glyphicon glyphicon-list-alt " aria-hidden="true"></span>
-        <select class="form-control-static">
+        <select class="form-control-static" name="tipo">
             <option value="visa">VISA</option>
             <option value="masterCard">Master Card</option>
         </select>
         <br>
         <br>
-        <button type="button"  onclick="pago()" class="btn-success btn-md">PAGAR</button>
+        <button type="submit"  class="btn-success btn-md">PAGAR</button>
+            </form>
     </div>
     <script>
         function deposito() {
@@ -73,10 +75,7 @@ $extras=$_SESSION['instrumentos']+$_SESSION['maleta']+$_SESSION['abordo'];
 
         }
         function pago() {
-            var clave=Math.floor(Math.random()*10000000000000);
-            alert("Pago realizado correctamente, puede pasar a recoger sus boletos de avion  " +
-                    "con la siguiente clave:  "+clave);
-            window.location="fin.html";
+
         }
 
     </script>

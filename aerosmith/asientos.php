@@ -19,10 +19,11 @@ include("conexion.php");
     <br><br><br>
     <!--aqui insertar la funcion de php para ver los asientos -->
     <?php
-
+    $idReg="Vuelo de ida";
     $numero_personas=$_SESSION['numPas'];
     if($_SESSION['isRedondo']){
         //primero vamos al de ida
+        echo "<h2>".$idReg."</h2>";
         $id=$_SESSION['id_vuelo_ida'];
         $clase=$_SESSION['clase_ida'];
     }else{
@@ -32,8 +33,12 @@ include("conexion.php");
 
 
     if($_SESSION['courrent']==false){
+        echo "<h2>".$idReg."</h2>";
         $id=$_SESSION['idVuelta'];
         $clase=$_SESSION['clase_vuelta'];
+        $_SESSION['ticketRedondo']=true;
+        $_SESSION['isRedondo']=false;
+
     }
     echo $id;
     //$id=1;

@@ -23,7 +23,7 @@ if(!empty($_POST['nombreCliente'])) {
     if(base($sql1)){
         $band1=true;
         echo "<script>
-                   alert('Registro insertado correctamente');
+                   
                    window.location='clientesExtras.php'; 
                     </script>";
     }else{

@@ -32,14 +32,14 @@ if(!empty($_POST['nombreCliente'])) {
 
 }
 if(!empty($_POST['nombreClienteCon'])) {
-    $nombreCon = $_POST['nombreClienteCon'];
-    $segundoNombreCon = $_POST['segundoNombreCon'];
-    $apellidoPatCon = $_POST['apellidoPatCon'];
-    $apellidoMatCon = $_POST['apellidoMatCon'];
+    $nombreCon = strtoupper($_POST['nombreClienteCon']);
+    $segundoNombreCon = strtoupper($_POST['segundoNombreCon']);
+    $apellidoPatCon = strtoupper($_POST['apellidoPatCon']);
+    $apellidoMatCon = strtoupper($_POST['apellidoMatCon']);
     $telCon = $_POST['telCon'];
     $emailCon = $_POST['emailCon'];
     $sql2="INSERT into contacto(Nombre,Seg_nommbre,Apellido_Pat,Apellido_Mat,Telefono,email)VALUES('$nombreCon','$segundoNombreCon','$apellidoPatCon','$apellidoMatCon','$telCon','$emailCon')";
-
+    $_SESSION['contacto']=$nombreCon." ".$segundoNombreCon." ".$apellidoPatCon." ".$apellidoMatCon;
     if(base($sql2)){
         $band2="true";
         $sql3="SELECT id from contacto where email='$emailCon'";
