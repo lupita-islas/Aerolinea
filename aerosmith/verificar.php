@@ -102,10 +102,11 @@ if($conn->connect_error) {
                 }
                 $_SESSION["numero"]=$f;
 
-                $turista=0;
-                $primera=0;
+
 
                 for($x=0; $x<$f; $x++){
+                    $turista=0;
+                    $primera=0;
                     $id=$vuelos[$x][0];
                     $sql_dis="SELECT * from asientos where Id_vuelo='$id'";
                     $res_dis=$conn->query($sql_dis);
@@ -124,6 +125,20 @@ if($conn->connect_error) {
                     $vuelos[$x][9]=$tot_prim;
                 }
                 $_SESSION["vuelos"]=$vuelos;
+
+                $cont_disp_t=0;
+                $cont_disp_p=0;
+                for($x=0; $x<$f; $x++){
+                    $cont_disp_t+=$vuelos[$x][8];
+                    $cont_disp_p+=$vuelos[$x][9];
+                }
+                if($cont_disp_t<=$total_bol && $cont_disp_p<=$total_bol){
+                    ?> <script>
+                        alert('No hay suficientes asientos ');
+                        window.location = 'vuelos.php';
+                    </script>
+                    <?php
+                }
 
                 //mostrar();
                 ?> <script>

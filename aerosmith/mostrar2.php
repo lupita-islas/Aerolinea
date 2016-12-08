@@ -57,8 +57,8 @@
                 $eleccion="2";
             }
 
-            $vuelos=$_SESSION["vuelos"];
-            $max=$_SESSION["numero"];
+            $vuelos=$_SESSION["vuelos_reg"];
+            $max=$_SESSION["numero_reg"];
 
             /*echo $vuelos[0][3];
             echo $_SESSION["sal_org"];
