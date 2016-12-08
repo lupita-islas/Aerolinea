@@ -95,7 +95,7 @@ if($conn->connect_error) {
             }else{
                 ?> <script>
                     alert('No se encontro ningún vuelo ');
-                    window.location = 'vuelos.html';
+                    window.location = 'vuelos.php';
                 </script>
                 <?php
             }
@@ -104,7 +104,7 @@ if($conn->connect_error) {
         ?>
         <script>
             alert('No se encontro ningún vuelo de regreso');
-            window.location = 'vuelos.html';
+            window.location = 'vuelos.php';
         </script>
         <?php
     }

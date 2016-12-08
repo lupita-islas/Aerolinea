@@ -23,10 +23,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Aerosmith</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-usd"></span> Monto</a></li>
+                <li class="active"><a href="vuelos.php">Aerosmith</a></li>
             </ul>
         </div>
     </div>
@@ -141,12 +138,15 @@
                                 if($_SESSION["precio_ida"]=="Precio_corto"){
                                     echo '$'.$vuelos[$x][11];
                                     $_SESSION["precio"]=$vuelos[$x][11];
+                                    $_SESSION["diferencia"]=$vuelos[$x][14] - $vuelos[$x][11];
                                 }else if($_SESSION["precio_ida"]=="Precio_medio"){
                                     echo '$'.$vuelos[$x][12];
                                     $_SESSION["precio"]=$vuelos[$x][12];
+                                    $_SESSION["diferencia"]=$vuelos[$x][15] - $vuelos[$x][12];
                                 }else if($_SESSION["precio_ida"]=="Precio_largo"){
                                     echo '$'.$vuelos[$x][13];
                                     $_SESSION["precio"]=$vuelos[$x][13];
+                                    $_SESSION["diferencia"]=$vuelos[$x][16] - $vuelos[$x][13];
                                 }
                                 echo '<br>Disponibles:' . $vuelos[$x][8] . '</div>';
                                 echo '<div class="col-sm-4"> <input type="radio" name="clase" value="1_'.$vuelos[$x][0].'" > ';
@@ -171,12 +171,15 @@
                                 if($_SESSION["precio_ida"]=="Precio_corto"){
                                     echo '$'.$vuelos[$x][11];
                                     $_SESSION["precio"]=$vuelos[$x][11];
+                                    $_SESSION["diferencia"]=$vuelos[$x][14] - $vuelos[$x][11];
                                 }else if($_SESSION["precio_ida"]=="Precio_medio"){
                                     echo '$'.$vuelos[$x][12];
                                     $_SESSION["precio"]=$vuelos[$x][12];
+                                    $_SESSION["diferencia"]=$vuelos[$x][15] - $vuelos[$x][12];
                                 }else if($_SESSION["precio_ida"]=="Precio_largo"){
                                     echo '$'.$vuelos[$x][13];
                                     $_SESSION["precio"]=$vuelos[$x][13];
+                                    $_SESSION["diferencia"]=$vuelos[$x][16] - $vuelos[$x][13];
                                 }
                                 echo '<br>Disponibles:' . $vuelos[$x][8] . '</div>';
                                 echo '<div class="col-sm-4"> <input type="radio" name="clase" value="1_'.$vuelos[$x][0].'"> ';
@@ -202,12 +205,15 @@
                                 if($_SESSION["precio_ida"]=="Precio_corto"){
                                     echo '$'.$vuelos[$x][11];
                                     $_SESSION["precio"]=$vuelos[$x][11];
+                                    $_SESSION["diferencia"]=$vuelos[$x][14] - $vuelos[$x][11];
                                 }else if($_SESSION["precio_ida"]=="Precio_medio"){
                                     echo '$'.$vuelos[$x][12];
                                     $_SESSION["precio"]=$vuelos[$x][12];
+                                    $_SESSION["diferencia"]=$vuelos[$x][15] - $vuelos[$x][12];
                                 }else if($_SESSION["precio_ida"]=="Precio_largo"){
                                     echo '$'.$vuelos[$x][13];
                                     $_SESSION["precio"]=$vuelos[$x][13];
+                                    $_SESSION["diferencia"]=$vuelos[$x][16] - $vuelos[$x][13];
                                 }
                                 echo '<br>Disponibles:' . $vuelos[$x][8] . '</div>';
                                 echo '<div class="col-sm-4"> <input type="radio" name="clase" value="1_'.$vuelos[$x][0].'"> ';
@@ -233,7 +239,9 @@
                 ?>
                 </div>
 
+            <section class="botones">
             <input type="submit" value="Continuar">
+                </section>
             <?php
             echo "</form>";
             ?>
