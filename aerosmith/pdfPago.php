@@ -10,6 +10,7 @@ require('fpdf181/fpdf.php');
 date_default_timezone_set('America/Mexico_City');
 $extra="";
 
+
 if($_SESSION['instrumentos']!=0){
     $extra .= "Instrumento |";
 }
@@ -27,6 +28,8 @@ class PDF extends FPDF{
         $this->SetFont('Arial','B',15);
         $this->Cell(80);
         $this->Cell(30,10,'Aerolineas de Aguascalientes S.A. de C.V.',0,0,'C');
+        $this->Ln(20);
+        $this->Cell(40,30,'---"Aerosmith"---',0,0,'C');
         $this->Ln(20);
     }
 
@@ -55,8 +58,10 @@ if(!empty($_SESSION['contacto'])){
 }
 if(isset($_SESSION['ticketRedondo'])){
     $pdf->Cell(0,10,"ID Vuelo ida: ".$_SESSION['id_vuelo_ida']. " | ID Vuelo Vuelta: ".$_SESSION['idVuelta'],0,1);
+    $pdf->Cell(0,10,"Vuelo redondo de  ".$_SESSION['origen']. "  a  ".$_SESSION['destino'],0,1);
 }else{
     $pdf->Cell(0,10,"ID Vuelo: ".$_SESSION['idIda'] ,0,1);
+    $pdf->Cell(0,10,"Destino: ".$_SESSION['destino'] ,0,1);
 }
 $pdf->Cell(0,10,"Boletos: ".$_SESSION['numPas'],0,1);
 if($extra==""){
@@ -66,7 +71,7 @@ if($extra==""){
 }
 
 $pdf->Cell(0,10,"Asientos seleccionados:    ".$_SESSION['asientos'] ,0,1);
-$pdf->Cell(0,10,"Total: ",0,1);
+$pdf->Cell(0,10,"Total: $".$_SESSION['totalDinero'],0,1);
 $pdf->Cell(0,10,"----------------------------------------------------------------------------------------------------------------------------------",0,1);
 $pdf->Ln(25);
 $pdf->Cell(0,10,"Banamecs: 041414190641651974165165165162312",0,1);

@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <?php
 session_start();
-$extras=$_SESSION['instrumentos']+$_SESSION['maleta']+$_SESSION['abordo'];
+$_SESSION['extras']=$_SESSION['instrumentos']+$_SESSION['maleta']+$_SESSION['abordo'];
 //AQUI DEBERIA SUMAR EL TOTAL TOTAL
+if(isset($_SESSION['extras'])){
+    $_SESSION['totalDinero']+=$_SESSION['extras'];
+}
 ?>
 <html lang="en">
 <head>
@@ -10,9 +13,35 @@ $extras=$_SESSION['instrumentos']+$_SESSION['maleta']+$_SESSION['abordo'];
     <title>Metodo de pago</title>
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="estilos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/icono.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href=estilos.css>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img class="navbar-brand" src="images/airplane.png">
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Aerosmith</a></li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<div class="container">
 <h1>Forma de pago</h1>
     <div class="divPago">
         <img src="images/tarjetas.jpg" class="imagenPago"><br><br>
@@ -30,7 +59,7 @@ $extras=$_SESSION['instrumentos']+$_SESSION['maleta']+$_SESSION['abordo'];
         <h4>Cantidad a pagar: </h4>
         <form method="post" action="pagoTarjeta.php">
         <span class="glyphicon glyphicon-usd " aria-hidden="true"></span>
-        <input type="text"  class="form-control-static" value="<?php echo $extras?>" disabled>
+        <input type="text"  class="form-control-static" value="<?php echo  $_SESSION['totalDinero']?>" disabled>
         <br>
         <span class="glyphicon glyphicon-user " aria-hidden="true"></span>
         <input type="text" name="nombre" class="form-control-static" placeholder="Nombre ">
@@ -53,6 +82,7 @@ $extras=$_SESSION['instrumentos']+$_SESSION['maleta']+$_SESSION['abordo'];
         <br>
         <button type="submit"  class="btn-success btn-md">PAGAR</button>
             </form>
+    </div>
     </div>
     <script>
         function deposito() {
@@ -79,5 +109,10 @@ $extras=$_SESSION['instrumentos']+$_SESSION['maleta']+$_SESSION['abordo'];
         }
 
     </script>
+<div>
+        <footer class="container-fluid text-center">
+            <p>Aerolinea AEROSMITH<br>Rodriguez Huerta César Omar | Islas Ortega Ruth Guadalupe<br>ISC 5C</p>
+        </footer>
+</div>
 </body>
 </html>

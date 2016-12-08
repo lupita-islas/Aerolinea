@@ -6,7 +6,10 @@ include("conexion2.php");
 $origen=$_POST["origen"];
 $destino=$_POST["destino"];
 $fecha_sal=$_POST["salida"];
-$fecha_reg=$_POST["regreso"];
+if(isset($_POST["regreso"])){
+    $fecha_reg=$_POST["regreso"];
+}
+
 $adulto=$_POST["pasajero_adu"];
 $menor=$_POST["pasajero_ni"];
 $reg_bef=$_POST["reg_bef"];
@@ -26,7 +29,10 @@ $_SESSION["destino"]=$destino;
 $_SESSION["adulto"]=$adulto;
 $_SESSION["menor"]=$menor;
 $_SESSION["salida"]=$fecha_sal;
-$_SESSION["regreso"]=$fecha_reg;
+if(isset($fecha_reg)){
+    $_SESSION["regreso"]=$fecha_reg;
+}
+
 $_SESSION["boletos"]=$total_bol;
 $_SESSION["reg_bef"]=$reg_bef;
 $_SESSION["reg_af"]=$reg_af;

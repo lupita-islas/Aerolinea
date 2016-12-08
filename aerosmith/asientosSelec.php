@@ -11,6 +11,10 @@ include("conexion.php");
 $id=$_POST['id'];
 $clase=$_POST['clase'];
 $numeros=$_POST['asientos'];
+if(isset($_POST['cobroExtra'])){
+    $_SESSION['totalDinero']+=$_POST['cobroExtra'];
+}
+
 $_SESSION['asientos'].=(string)$numeros;
 $asientos=explode(":",$numeros);
 $redondo=$_SESSION['isRedondo'];///aqui verificamos si es redondo

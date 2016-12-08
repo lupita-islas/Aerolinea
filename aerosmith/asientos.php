@@ -9,13 +9,41 @@ include("conexion.php");
     <meta charset="UTF-8">
     <title>Seleccion de Asiento</title>
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/icono.png">
     <link href="estilos.css" rel="stylesheet">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body onload="setInterval('verificarSiguiente()',100)">
-    <h1>Seleccione sus asientos</h1>
-    <img class=' asientoImage ' src="images/asiento.png" title='Disponible'>
-    <img class=' asientoImage ' src="images/asientoOcup.png" title='Ocupado'>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img class="navbar-brand" src="images/airplane.png">
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Aerosmith</a></li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+
+<h1>Seleccione sus asientos</h1>
+    <div class="asientosMuestra">
+        <h5>Disponible</h5>
+        <img class=' asientoImage ' src="images/asiento.png" title='Disponible'>
+    </div>
+    <div class="asientosMuestra">
+        <h5>Ocupado</h5>
+        <img class=' asientoImage ' src="images/asientoOcup.png" title='Ocupado'>
+    </div>
     <br><br><br>
     <!--aqui insertar la funcion de php para ver los asientos -->
     <?php
@@ -33,14 +61,14 @@ include("conexion.php");
 
 
     if($_SESSION['courrent']==false){
-        echo "<h2>".$idReg."</h2>";
+       //s echo "<h2>".$idReg."</h2>";
         $id=$_SESSION['idVuelta'];
         $clase=$_SESSION['clase_vuelta'];
         $_SESSION['ticketRedondo']=true;
         $_SESSION['isRedondo']=false;
 
     }
-    echo $id;
+    //echo $id;
     //$id=1;
     //$clase="0";//1-> primera clase  | 0->clase turista
     $sql="SELECT * FROM asientos WHERE Id_vuelo=$id";
@@ -53,7 +81,15 @@ include("conexion.php");
             $j++;
         }
     }
+   echo "<div class=\"container-fluid text-center\">
+    <div class=\"row content\">
+        <div class=\"col-sm-2 sidenav\">
+            <p><img src=\"images/airplane.png\"></p>
+            <p><img src=\"images/airplane2.png\"></p>
+            <p><img src=\"images/airplane4.png\"></p>
 
+        </div>
+        <div class=\"col-sm-8 text-center\">";
     echo "||";
     for($i=1;$i<9;$i++){
 
@@ -87,6 +123,7 @@ include("conexion.php");
 
     echo "<form action='asientosSelec.php' method='post'>";
     echo "<input type='number' value='".$id."'  hidden name='id'>";
+    echo "<input type='number'  hidden name='cobroExtra' id='cobroExtra'>";
     if($clase==1){
         echo "<input type='text' value='PRIMERA' name='clase' hidden >";
     }else{
@@ -97,6 +134,18 @@ include("conexion.php");
     echo "</form>";
 
     ?>
+    </div>
+    <div class="col-sm-2 sidenav">
+        <div class="well">
+            <?php
+
+            echo "<p>Destino:".$_SESSION['destino']."</p>";
+            echo "<p>Numero de pasajeros:".$_SESSION['numPas']."</p>";
+            echo "<p>Total: $".$_SESSION['totalDinero']."</p>";
+
+            ?>
+        </div>
+    </div>
     <script type="text/javascript">
         var numPer= <?php echo $numero_personas ?>;
         var claseTipo= <?php echo $clase ?>;
@@ -122,18 +171,28 @@ include("conexion.php");
             $('[data-toggle="tooltip"]').tooltip();
         });
         function choose(x,y) {
-            if(claseTipo!=0 && x>1 && x<=8) {
+            if(claseTipo==1 && x>8 ){
+                if(confirm("¿Desea quitar <?php echo $_SESSION['diferencia'] ?> pesos por ocuapar un lugar de clase turista y "
+                        +"quiza no viaje con la comodidad deseada?")){
+                    asientos(x,y);
+                    //disminuri variable de cobro :D
+                    document.getElementById("cobroExtra").value=(<?php echo $_SESSION['diferencia'] ?>)*-1;
+                }
+            }
+            if(claseTipo==1 && x>1 && x<=8) {
                 asientos(x,y);
             }else{
                 if(x>8){
                     asientos(x,y);
                 }else{
-                    if(confirm("Desea agregar 1500 pesos por ocuapar un lugar de primera clase?")){
+                    if(confirm("Desea agregar <?php echo $_SESSION['diferencia'] ?> pesos por ocuapar un lugar de primera clase?")){
                         asientos(x,y);
                         //aumentar variable de cobro :D
+                        document.getElementById("cobroExtra").value=<?php echo $_SESSION['diferencia'] ?>;
                     }
                 }
             }
+
 
             document.getElementById("asientos").value=numAs;
         }
@@ -168,6 +227,10 @@ include("conexion.php");
     }
     setInterval('verificarSiguiente()',1000);
     </script>
+
+    <footer class="container-fluid text-center">
+        <p>Aerolinea AEROSMITH<br>Rodriguez Huerta César Omar | Islas Ortega Ruth Guadalupe<br>ISC 5C</p>
+    </footer>
 
 </body>
 </html>
