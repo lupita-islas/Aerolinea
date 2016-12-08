@@ -85,12 +85,12 @@ if($conn->connect_error) {
                     $vuelos[$f][16]=$row["Precio_largo_p"];
 
 
-                    echo $vuelos[$f][0];
+                    /*echo $vuelos[$f][0];
                     echo $vuelos[$f][1];
                     echo $vuelos[$f][2];
                     echo $vuelos[$f][3];
                     echo $vuelos[$f][4];
-                    echo '<br>';
+                    echo '<br>';*/
                     $f+=1;
 
                 }
@@ -142,105 +142,3 @@ if($conn->connect_error) {
         <?php
     }
 }
-
-function mostrar(){
-    global $vuelos;
-    global $f;
-    ?>
-    <input type="text" id="temporal">
-    <script>
-        var id;
-        id=2;
-        function antes(){
-            id=1;
-            window.location =window.location;
-                window.location = window.location+'?temp='+id;
-        }
-        function justo(){
-            id=2;
-            window.location = window.location+'?temp='+id;
-        }
-        function despues(){
-            id=3;
-            window.location = window.location+'?temp='+id;
-        }
-    </script>
-    <table style="border:solid 1px black " align="center" cellspacing="10px" id="basic-table">
-        <tr>
-            <th><p id="antes" onclick="antes()"><?php echo $_SESSION["sal_bef"]; ?></p></th>
-            <th><p id="justo" onclick="justo()"><?php echo $_SESSION["salida"]; ?></p></th>
-            <th><p id="antes" onclick="despues()"><?php echo $_SESSION["sal_af"]; ?></p></th>
-        </tr>
-            <tr>
-                <th>VUELO</th>
-                <th>TURISTA</th>
-                <th>PRIMERA</th>
-            </tr>
-
-        <!--<script>
-           (function () {
-        <?php
-        if(isset($eleccion)) {
-
-            for ($x = 0; $x < $f; $x++) {
-                ?>
-                <tr>
-
-                    <?php
-                    if ($eleccion == 1) {
-                        if ($vuelos[$x][3] == $_SESSION["sal_bef"]) {
-                            echo '<td>' . $vuelos[$x][1] . ' ' . $vuelos[$x][4];
-                            echo '<br> >' . $vuelos[$x][2] . ' ' . $vuelos[$x][6];
-                            echo '</td>';
-                            echo '<td> Disponibles:' . $vuelos[$x][8] . '</td>';
-                            echo '<td> Disponibles:' . $vuelos[$x][9] . '</td>';
-                        }
-                    } else if ($eleccion == 2) {
-                        if ($vuelos[$x][3] == $_SESSION["salida"]) {
-                            echo '<td>' . $vuelos[$x][1] . ' ' . $vuelos[$x][4];
-                            echo '<br> >' . $vuelos[$x][2] . ' ' . $vuelos[$x][6];
-                            echo '</td>';
-                            echo '<td> Disponibles:' . $vuelos[$x][8] . '</td>';
-                            echo '<td> Disponibles:' . $vuelos[$x][9] . '</td>';
-                        }
-
-                    } else if ($eleccion == 3) {
-                        if ($vuelos[$x][3] == $_SESSION["salida"]) {
-                            echo '<td>' . $vuelos[$x][1] . ' ' . $vuelos[$x][4];
-                            echo '<br> >' . $vuelos[$x][2] . ' ' . $vuelos[$x][6];
-                            echo '</td>';
-                            echo '<td> Disponibles:' . $vuelos[$x][8] . '</td>';
-                            echo '<td> Disponibles:' . $vuelos[$x][9] . '</td>';
-                        }
-
-                    }
-                    ?>
-                </tr>
-                <?php
-            }
-        }
-        ?>
-        </table>-->
-    <?php
-
-}
-
-class TableRows extends RecursiveIteratorIterator {
-    function __construct($it) {
-        parent::__construct($it, self::LEAVES_ONLY);
-    }
-
-    function current() {
-        return "<td>" . parent::current(). "</td>";
-    }
-
-    function beginChildren() {
-        echo "<tr>";
-    }
-
-    function endChildren() {
-        echo "</tr>" . "\n";
-    }
-}
-
-?>

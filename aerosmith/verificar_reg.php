@@ -52,11 +52,11 @@ if($conn->connect_error) {
                     $vuelos_reg[$f][15]=$row["Precio_medio_p"];
                     $vuelos_reg[$f][16]=$row["Precio_largo_p"];
 
-                    echo $vuelos_reg[$f][0];
+                    /*echo $vuelos_reg[$f][0];
                     echo $vuelos_reg[$f][1];
                     echo $vuelos_reg[$f][2];
                     echo $vuelos_reg[$f][3];
-                    echo $vuelos_reg[$f][4];
+                    echo $vuelos_reg[$f][4];*/
 
                     $f+=1;
 
